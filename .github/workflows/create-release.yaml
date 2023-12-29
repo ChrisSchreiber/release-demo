@@ -22,6 +22,4 @@ jobs:
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
-        run: 'npx semantic-release@20
-          --branches "[{name: ''main'', prerelease: false}, {name: ''pre-([0-9]+)([-a-zA-Z0-9]+)?''}]"
-          --plugins "[''@semantic-release/commit-analyzer'', ''@semantic-release/release-notes-generator'', ''@semantic-release/github'']"'
+        run: npx semantic-release@20
