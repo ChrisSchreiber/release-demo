@@ -21,5 +21,5 @@ jobs:
           node-version: 18
       - name: Semantic Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release@20
