@@ -1,0 +1,27 @@
+name: Create Release
+
+on:
+  push:
+    branches:
+      - main
+      - rc-*
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_DEPLOY_TOKEN }}
+        run: "npx semantic-release@20
+          --branches=[{name: 'main', prerelease: false}, {name: 'pre-([0-9]+)([-a-zA-Z0-9]+)?'}]
+          --plugins=['@semantic-release/commit-analyzer', '@semantic-release/release-notes-generator', '@semantic-release/github']"

@@ -1,0 +1,12 @@
+name: Release
+
+on:
+  release:
+    types:
+      - released
+
+jobs:
+  prerelease:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Release"
